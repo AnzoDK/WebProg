@@ -8,6 +8,10 @@
     function Connect(): mysqli
     {
         $mysql = new mysqli($SQL_HOST, $SQL_USERNAME, $SQL_PASSWORD,$DEFAULT_DB);
+        if ($mysql -> connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+            exit();
+          }
         return $mysql;
     }
 
