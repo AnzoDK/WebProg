@@ -22,7 +22,7 @@
     </head>
     <body>
         <?php
-            echo '<h1 id="pageHeader" class="centered header">' . $pageName .'</h1>'
+            echo '<h1 id="pageHeader" class="centered header">' . $pageName .'</h1>';
         ?>
     </body>
     <footer>

@@ -1,6 +1,6 @@
 <?php
-    $SQL_USERNAME = "root";
-    $SQL_PASSWORD = "localuserpass";
+    $SQL_USERNAME = "root"; //This is okay to publish to git because its just a local server
+    $SQL_PASSWORD = "localuserpass"; //same with this
 
     $DEFAULT_DB = "LocalWeb";
 
