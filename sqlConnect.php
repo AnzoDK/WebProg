@@ -134,7 +134,7 @@
         $res->close();
         if($html == "")
         {
-            return GetPageBody(GetPageBody(GetErrorPageID()));
+            return GetPageBody(GetErrorPageID());
         }
         return $html;
     }
