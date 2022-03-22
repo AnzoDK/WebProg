@@ -4,10 +4,18 @@
     if(isset($_GET['pageID']))
     {
         $pageID = $_GET['pageID'];
+        if($pageID == "ERR")
+        {
+            $pageID = GetErrorPageID();
+        }
+        if(!preg_match('/[0-9]/', $pageID))
+        {
+            $pageID = GetErrorPageID();
+        }
     }
     else
     {
-        $pageID = 0;
+        $pageID = GetFrontPageID();
     }
     
     $pageName = GetPageName($pageID);
@@ -21,8 +29,9 @@
     </head>
     <body>
         <?php
-            echo '<p>' . phpinfo() .'</p>';
+            //echo '<p>' . phpinfo() .'</p>';
             echo '<h1 id="pageHeader" class="centered header">' . $pageName .'</h1>';
+            echo GetPageBody($pageID);
         ?>
     </body>
     <footer>
