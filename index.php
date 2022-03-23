@@ -1,5 +1,4 @@
 <?php
-
     require_once("sqlConnect.php");
     $pageID = null;
     if(isset($_GET['pageID']))
