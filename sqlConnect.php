@@ -75,6 +75,11 @@
         return true;
     }
 
+    function CheckAndSetToken($username, $token)
+    {
+        //TODO
+    }
+
     function GetSetting(String $SettingName): String
     {
         $res = SQL_ExecuteQuery('SELECT settingValue FROM settings WHERE settingName="' . $SettingName . '";');
@@ -87,14 +92,33 @@
     {
         if(GetSetting($settingName) != "")
         {
-            SQL_ExecuteQuery('UPDATE settings SET settingValue="' . $settingVal . '" WHERE settingName="' . $settingName . '";');
+            $res = SQL_ExecuteQuery('UPDATE settings SET settingValue="' . $settingVal . '" WHERE settingName="' . $settingName . '";');
+            $res->close();
             return;
         }
         else
         {
-            SQL_ExecuteQuery('INSERT INTO settings(settingName, settingValue) VALUES("' . $settingName . '","' . $settingVal . '");');
+            $res = SQL_ExecuteQuery('INSERT INTO settings(settingName, settingValue) VALUES("' . $settingName . '","' . $settingVal . '");');
+            $res->close();
             return;
         }
+    }
+    function GetHashForUserByName(String $username): String
+    {
+        $res = SQL_ExecuteQuery('SELECT passhash FROM users WHERE username="' . $username . '";');
+        $hash = $res->fetch_assoc()['passhash'];
+        $res->close();
+        return $hash;
+    }
+    function GetHashForUserByID(int $id): String
+    {
+        //TODO
+        return "";
+    }
+    function GetUsernameByID(int $id): String
+    {
+        //TODO
+        return "";
     }
 
     function GetErrorPageID(): int
