@@ -135,7 +135,7 @@
 
     function GetPageName(int $id): String
     {
-        $res = SQL_ExecuteQuery("SELECT pageName FROM pages WHERE id=" . $id);
+        $res = SQL_ExecuteQuery("SELECT pageName FROM pages WHERE id=" . $id . ";");
         $name = "";
         while($row = $res->fetch_assoc())
         {
@@ -154,7 +154,12 @@
     function GetPageBody(int $id): String
     {
         $res = SQL_ExecuteQuery("SELECT id,pageHTML FROM pages WHERE id=" . $id . ";");
-        $html = $res->fetch_assoc()['pageHTML'];
+        $html_arr = $res->fetch_assoc();
+        $html = "";
+        if($html_arr != NULL)
+        {
+            $html = $html_arr['pageHTML'];
+        }
         $res->close();
         if($html == "")
         {
